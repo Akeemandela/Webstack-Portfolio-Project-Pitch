@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NAIJA NEWS BLOG</title>
+	<link rel="shortcut icon" href="./image/favicon-32x32.png" type="image/x-icon">
+	<link rel="icon" href="./image/favicon.ico" type="image/png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+	<header>
+        <div class="container">
+			<div class="logo">
+		        <h1>NAIJA NEWS BLOG</h1>
+                <section>Pushing For The Fundamental Truth</section>
+            </div>
+        </div>
+            <nav>
+                <ul>
+                    <li><a href="./home.html">Home</a></li>
+                    <li><a href="./create.html">Add New Post</a></li>
+                    <!-- <li><a href="create.html">Create News</a></li> -->
+                    <!-- <li><a href="/all.html">All News</a></li> -->
+                    <li><a href="./all.html">All News</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+
+	</header>
+	<main>
+		<section>
+			<div class="container2">
+				<h2>Create New Post</h2>
+				<form action="create.html" method="POST">
+					<div>
+						<label for="title">Title:</label><br>
+						<input type="text" id="title" name="title" required>
+					</div>
+                    <!-- <div>
+						<label for="title">Snippet:</label><br>
+						<input type="text" id="snippet" name="snippet" required>
+					</div> -->
+					<div>
+						<p><label for="snippet">Snippet:</label></p>
+						<textarea class="textarea-snippet" id="snippet" name="snippet" required rows="50" cols="100"></textarea>
+					</div>
+					<div>
+						<label for="body">Body:</label><br>
+						<textarea id="body" name="body" required ></textarea>
+					</div>
+					<button type="submit">Create</button>
+				</form>
+			</div>
+		</section>
+	</main>
+</body>
+
+<footer>
+	<div class="container">
+		<div>
+			<p>&copy; <span id="currentYear"></span> Naija News</p>
+		</div>
+		<div>
+			<p>Created by <a href="https://github.com/Obapythonaire">Abdulahi Ogundare</a> and <a href="https://github.com/akeemandela">Akeem Akinyoola</a></p>
+		</div>
+	</div>
+    <script>
+		document.getElementById("currentYear").innerHTML = new Date().getFullYear();
+	</script>
+</footer>
+</html>

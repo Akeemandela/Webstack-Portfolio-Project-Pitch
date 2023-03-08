@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NAIJA NEWS BLOG</title>
+	<link rel="shortcut icon" href="./image/favicon-32x32.png" type="image/x-icon">
+	<link rel="icon" href="./image/favicon.ico" type="image/png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+	<header>
+        <div class="container">
+			<div class="logo">
+		        <h1>NAIJA NEWS BLOG</h1>
+                <section>Pushing For The Fundamental Truth</section>
+            </div>
+        </div>
+            <nav>
+                <ul>
+                    <li><a href="./home.html">Home</a></li>
+                    <li><a href="./create.html">Add New Post</a></li>
+                    <!-- <li><a href="create.html">Create News</a></li> -->
+                    <!-- <li><a href="/all.html">All News</a></li> -->
+                    <li><a href="./all.html">All News</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+
+	</header>
+	<main>
+		<section>
+            <div class="container2">
+			    <h2>All News</h2>
+            </div>
+			<div class="newsitem">
+				<h3>News Title 1</h3>
+				<p>News Snippet 1</p>
+				<a href="news.html">Read Full News...</a>
+			</div>
+			<div class="newsitem">
+				<h3>News Title 2</h3>
+				<p>News Snippet 2</p>
+				<a href="news.html">Read Full News....</a>
+			</div>
+			<div class="newsitem">
+				<h3>News Title 3</h3>
+				<p>News Snippet 3</p>
+				<a href="news.html">Read Full News...</a>
+			</div>
+		</section>
+	</main>
+</body>
+
+<footer>
+	<div class="container">
+		<div>
+			<p>&copy; <span id="currentYear"></span> Naija News</p>
+		</div>
+		<div>
+			<p>Created by <a href="https://github.com/Obapythonaire">Abdulahi Ogundare</a> and <a href="https://github.com/akeemandela">Akeem Akinyoola</a></p>
+		</div>
+	</div>
+    <script>
+		document.getElementById("currentYear").innerHTML = new Date().getFullYear();
+	</script>
+</footer>
+
+</html>

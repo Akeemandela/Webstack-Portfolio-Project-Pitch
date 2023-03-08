@@ -1,0 +1,173 @@
+body {
+	font-family: Arial, sans-serif;
+	/* height: 100vh; Set height to 100% of viewport height */
+	/* width: 100vw; Set width to 100% of viewport width */
+	margin: 0; /* Remove default margin */
+	padding: 0; /* Remove default padding */
+}
+
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+}
+
+.container {
+	/* max-width: 1200px; */
+	margin: 0 auto;
+	display: flex ;
+	/* justify-content: space-between; */
+	/* align-items: center; */
+}
+
+.container2 {
+    border: 1px solid #120909;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.logo h1 {
+	margin: 0;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 36px;
+	font-weight: bold;
+}
+
+h1 {
+	margin: 0;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav li {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+}
+
+nav a:hover {
+	text-decoration: underline;
+}
+
+main {
+	margin: 20px;
+}
+
+section {
+	margin-bottom: 20px;
+}
+
+h2 {
+	margin: 0 0 10px;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+li {
+	margin-bottom: 20px;
+}
+
+h3 {
+	margin: 0;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.newsitem {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+/
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+input[type="text"], textarea {
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+button[type="submit"] {
+	padding: 10px 20px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button[type="submit"]:hover {
+	background-color: #555;
+}
+
+textarea {
+    width: 600px;
+    height: 234px;
+}
+
+.textarea-snippet {
+    width: 565px;
+    height: 72px;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+}
+
+footer .container {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+footer p {
+	margin: 0;
+}
+
+footer a {
+	color: #fff;
+	text-decoration: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
