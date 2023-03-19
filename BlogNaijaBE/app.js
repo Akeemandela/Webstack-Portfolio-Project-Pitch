@@ -42,6 +42,10 @@ app.get('/blogs', (req, res) =>{
         console.log(err);
       })
 })
+app.get('/blogs/create', (req, res) => {
+    // res.send('<p>Home Page</p>')
+    res.render('create', { title: 'Create a New Blog'});
+});
 
 app.post('/blogs', (req, res) => {
     const blog = new Blog(req.body);
@@ -81,12 +85,6 @@ app.delete('/blogs/:id', (req, res) =>{
      
        
 })
-
-
-app.get('/blogs/create', (req, res) => {
-    // res.send('<p>Home Page</p>')
-    res.render('create', { title: 'Create a New Blog'});
-});
 
 app.use((req, res) => {
     // res.send('<p>Home Page</p>')
