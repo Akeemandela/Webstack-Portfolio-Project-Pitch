@@ -1,21 +1,4 @@
 {
-  "schemaVersion": 1,
-  "dockerfileLines": [
-    "FROM node:latest",
-    "WORKDIR /app",
-    "COPY package*.json ./",
-    "RUN npm install",
-    "COPY . .",
-    "EXPOSE 3000",
-    "CMD [ \"npm\", \"start\" ]"
-  ],
-  "dockerBuildArgs": {
-    "NODE_ENV": "production"
-  },
-  "appWorkingDir": "/app",
-  "preDeployFunction": "npm run build",
-  "environmentVariables": {
-    "DATABASE_URL": "mongodb://mongo:27017/myapp",
-    "PORT": "3000"
-  }
+  "schemaVersion": 2,
+  "dockerfileLines": ["./Dockerfile"]
 }
