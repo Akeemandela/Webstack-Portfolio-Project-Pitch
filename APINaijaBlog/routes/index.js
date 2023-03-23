@@ -6,6 +6,10 @@ import AuthController from '../controllers/AuthController';
 
 const router = Router();
 
+router.get('/', (req, res) => {
+  res.status(200).json({"error": false, "message": "you are welcome!"});
+});
+
 // check status and stats of db
 router.get('/status', AppController.getStatus);
 router.get('/stats', AppController.getStats);
