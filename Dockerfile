@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:12-alpine
 WORKDIR /app
 COPY APINaijaBlog/package*.json ./ 
 RUN npm install --prefix APINaijaBlogcd
