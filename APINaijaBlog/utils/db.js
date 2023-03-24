@@ -7,12 +7,12 @@ import {
 
 class DBClient {
   constructor() {
-    this.username = env.DB_USERNAME || 'Dirkk2023';
-    this.password = env.DB_PASSWORD || 'HegelDirkkSite2023@#';
-    this.host = env.DB_HOST || 'srv-captain--mongo-db-dirkk';
+    this.username = env.DB_USERNAME || 'root';
+    this.password = env.DB_PASSWORD || '';
+    this.host = env.DB_HOST || 'localhost';
     this.port = env.DB_PORT || 27017;
     this.dbName = env.DB_DATABASE || 'blognaija';
-    MongoClient(`mongodb://${username}:${password}@${this.host}:${this.port}/${this.dbName}`, {
+    MongoClient(`mongodb://${this.host}:${this.port}/${this.dbName}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }).connect().then((client) => {
