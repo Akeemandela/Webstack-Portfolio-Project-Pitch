@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 List<Posts> transFromJson(String str) =>
     List<Posts>.from(json.decode(str).map((x) => Posts.fromMap(x)));
@@ -16,7 +17,7 @@ class Posts{
     title: json["title"],
     body: json["body"],
     snippet: json["snippet"],
-    datePub: json["createdAt"],
+    datePub: DateFormat("hh:mm dd-MM-yyyy").format(DateTime.parse(json["createdAt"])),
   );
 
 }

@@ -4,7 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'color.dart';
 
 class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
+  const Body({Key? key, required this.snippet, required this.date, required this.title, required this.body}) : super(key: key);
+
+  final String snippet;
+  final String date;
+  final String title;
+  final String body;
 
   @override
   Widget build(BuildContext context) {
@@ -12,14 +17,14 @@ class Body extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(width: MediaQuery.of(context).size.width * .05,),
-        Text("Didier drogba en ci",
+        Text(title,
           textAlign: TextAlign.center,
           textScaleFactor: 1.0,
           style: GoogleFonts.montserrat(
             color: colorGg,
             fontWeight: FontWeight.w900,
             fontSize: 18,),),
-        Text("Publish : 10-03-23",
+        Text("Publish : $date",
           textScaleFactor: 1.0,
           textAlign: TextAlign.center,
           style: GoogleFonts.montserrat(
@@ -27,7 +32,7 @@ class Body extends StatelessWidget {
             fontWeight: FontWeight.w500,
             fontSize: 10,),),
         Expanded(flex: 1,
-          child: Text("In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as".substring(0, 40) + '...',
+          child: Text("$body".substring(0, 40) + "...",
             textScaleFactor: 1.0,
             softWrap: false,
             maxLines: 2,

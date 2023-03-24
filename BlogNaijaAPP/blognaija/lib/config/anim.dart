@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:google_fonts/google_fonts.dart';
+
+import 'color.dart';
+
 class AnimationWidget extends StatefulWidget {
   final Widget child;
   final int delay;
@@ -49,4 +53,52 @@ class _AnimationWidgetState extends State<AnimationWidget>
       ),
     );
   }
+}
+
+
+void souSnackBar(BuildContext context, String message, Color color, {required int seconde}) {
+  final snackBar = SnackBar(
+    content: Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                "assets/newspaper.png",
+                height: 30,
+                width: 30,
+                fit: BoxFit.cover,
+              ),
+            ),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: color, width: 2.5, style: BorderStyle.solid),
+                borderRadius: BorderRadius.circular(20)
+            ),
+          ),
+          Expanded(
+              child: Text(message,
+                textScaleFactor: 1.0,
+                maxLines: 2,
+                overflow: TextOverflow.clip,
+                textAlign: TextAlign.center,
+                softWrap: true,
+                style: GoogleFonts.aBeeZee(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w200
+                ),
+              ))
+        ],
+      ),
+    ),
+    width: MediaQuery.of(context).size.width / 1.05,
+    backgroundColor: colorJ,
+    behavior: SnackBarBehavior.floating,
+    duration: Duration(seconds: seconde),
+    //action: SnackBarAction(label: "X", onPressed: (){}),
+
+  );
+  ScaffoldMessenger.of(context).showSnackBar(snackBar,);
 }

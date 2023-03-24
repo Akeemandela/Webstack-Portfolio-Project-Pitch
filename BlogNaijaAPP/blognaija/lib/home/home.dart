@@ -1,12 +1,11 @@
-
 import 'dart:convert';
-
 import 'package:blognaija/models/posts.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../config/anim.dart';
 import '../config/body.dart';
 import '../config/color.dart';
 import '../config/path.dart';
@@ -58,7 +57,13 @@ class _HomePageState extends State<HomePage> {
             fontSize: 18,)),
       icon: const Icon(Icons.add, color: Colors.white, size: 26,),
     ),
-        body: SingleChildScrollView(
+        body: RefreshIndicator(
+          onRefresh: () async {
+            // code à exécuter lors de l'actualisation
+            await Future.delayed(Duration(seconds: 1)); // par exemple, attendre 1 seconde
+            setState(() {}); // mettre à jour l'interface graphique
+          },
+          child:  SingleChildScrollView(
           child: Stack(
             children: [
              Padding(padding:const EdgeInsets.only(left: 10, right: 10),
@@ -75,47 +80,80 @@ class _HomePageState extends State<HomePage> {
                      color: Colors.white,
                      borderRadius:  BorderRadius.all(Radius.circular(5)),),
                    child: FutureBuilder<List<Posts>>(
-                           future: fetchCodeRedTot(),
+                           future: fetchPosts(),
                           builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return ListView.separated(
                             //physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            padding: EdgeInsets.only(top: 20,),
+                            reverse: false,
+                            padding: EdgeInsets.only(top: 20, bottom: 20),
                             separatorBuilder: (context, index) => const SizedBox(height: 3,),
                             itemCount: snapshot.data!.length,
-                            itemBuilder: (context, index) => Column(
-                              children: [
-                               Container(
-                                 height: 50,
-                                 child:  Row(
-                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                   children: [
-                                     Image.asset(
-                                       'assets/newspaper.png',
-                                       alignment: Alignment.center,
-                                       filterQuality: FilterQuality.high,
-                                       height: 20,
-                                       fit: BoxFit.cover,
-                                     ),
-                                     Body(),
-                                     Icon(Icons.remove_red_eye ,color: colorGg,),
-                                   ],
-                                 ),
-                               ),
-                                /*Divider(
-                                  height: MediaQuery.of(context).size.height * .03,
-                                  indent: MediaQuery.of(context).size.width * 0.02,
-                                  endIndent: MediaQuery.of(context).size.width * 0.02,
-                                  color: colorGg,
-                                ),*/
-                                // SizedBox(height: MediaQuery.of(context).size.height * .01,),
+                            itemBuilder: (context, index) {
 
-                              ],
-                            )
+                             return  Column(
+                                children: [
+                                  InkWell(
+                                    child: Container(
+                                      height: 50,
+                                      child:  Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            'assets/newspaper.png',
+                                            alignment: Alignment.center,
+                                            filterQuality: FilterQuality.high,
+                                            height: 20,
+                                            fit: BoxFit.cover,
+                                          ),
+                                          Body(snippet: "${snapshot.data![index].snippet}", date: "${snapshot.data![index].datePub}", title: "${snapshot.data![index].title}", body: "${snapshot.data![index].body}"),
+                                          Icon(Icons.remove_red_eye ,color: colorGg,),
+                                        ],
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      showModalBottomSheet(
+                                          shape: const RoundedRectangleBorder(borderRadius:BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+                                          backgroundColor: colorB,
+                                          context: context,
+                                          isScrollControlled: true,
+                                          builder: (_) {
+                                            return DraggableScrollableSheet(
+                                                expand: false,
+                                                initialChildSize: 0.6,
+                                                minChildSize: 0.6,
+                                                maxChildSize: 0.9,
+                                                builder: (context, scrollController) {
+                                                  return StatefulBuilder(
+                                                      builder: (BuildContext context, setState) {
+                                                        return SingleChildScrollView(
+                                                            controller: scrollController,
+                                                            child: Text('')
+                                                        );
+                                                      }
+                                                  );
+
+                                                });
+                                          });
+                                    },
+                                  )
+                                ],
+                              );
+                            }
                         );
-                      } else {
+                      } else if (snapshot.hasError) {
+                          // code pour afficher une erreur
+                          souSnackBar(context, ' Please restart after', Colors.red, seconde: 4);
+                          return Center(child: Image.asset(
+                            'assets/load.gif',
+                            alignment: Alignment.center,
+                            filterQuality: FilterQuality.high,
+                            height: 230,
+                            fit: BoxFit.cover,
+                          ),);
+                        } else {
                         return Center(child: Image.asset(
                           'assets/load.gif',
                           alignment: Alignment.center,
@@ -133,11 +171,11 @@ class _HomePageState extends State<HomePage> {
              )
 
             ],),
-        )
+        ),)
     );
   }
 
-  Future<List<Posts>> fetchCodeRedTot() async {
+  Future<List<Posts>> fetchPosts() async {
     final response =
     await http.get(Uri.parse('$apiRoute/posts'),
       headers:
@@ -145,12 +183,12 @@ class _HomePageState extends State<HomePage> {
         'Content-Type': 'application/json; charset=utf-8',
       },
     );
-    print(json.decode(response.body));
+    print(json.decode(response.body)['data']);
     if (response.statusCode == 200) {
 
       final parsed = json.decode(response.body)['data'].cast<Map<String, dynamic>>();
 
-      return parsed.map<Posts>((json) => Posts.fromMap(json)).toList();
+      return parsed.reversed.map<Posts>((json) => Posts.fromMap(json)).toList();
     } else {
       throw Exception('Failed to load album');
     }
