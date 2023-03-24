@@ -39,12 +39,9 @@ dependencies:
   get: ^4.6.5
   flutter_native_splash: ^2.2.5
   google_fonts: ^3.0.1
-  animated_text_kit: ^4.2.2
-  shrink_sidemenu: ^2.0.0+2-null-safety
   url_launcher: ^6.1.5
   share_plus: ^4.0.10
   flutter_spinkit: ^5.1.0
-  curved_navigation_bar: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -69,7 +66,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+      - assets/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:blognaija/config/anim.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +29,7 @@ class _SplashState extends State<Splash> {
     Timer(
         const Duration(
           milliseconds: 500,
-          seconds: 3,
+          seconds: 5,
         ), () async {
       Get.to(() => HomePage(), transition: Transition.circularReveal,
           duration: const Duration(seconds: 4));
@@ -39,24 +40,35 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor:const  Color(0xfffbfbfb),
-        body: Column(
+        backgroundColor: Colors.white,
+        body:  Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Spacer(),
             Center(
-              child:Text("NAIJA NEWS BLOG",
+              child: Image.asset(
+                'assets/new.gif',
+                alignment: Alignment.center,
+                filterQuality: FilterQuality.high,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const Spacer(),
+            AnimationWidget(
+                delay: 1500,
+                x: 0.0,
+                y: 1.0,
+                child: Padding(padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
+                  child:Text("NAIJA NEWS BLOG",
                       textAlign: TextAlign.left,
                       maxLines: 3,
                       style: GoogleFonts.raleway(
                           fontSize: 17,
                           color: Colors.black,
                           fontWeight: FontWeight.w800
-                      ),
-
-              ),
-            ),
-            const Spacer(),
+                      ),)
+            ),),
+            const SizedBox(height: 20,)
           ],
         )
     );
