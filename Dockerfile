@@ -2,10 +2,10 @@ FROM node:14-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY APINaijaBlog/package*.json ./
 RUN npm install
 
 COPY . .
 
-EXPOSE 3000
-CMD [ "npm", "start" ]
+EXPOSE 6000
+CMD [ "npm", "run", "start-server"]
