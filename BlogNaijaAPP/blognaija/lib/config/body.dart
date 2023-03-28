@@ -18,12 +18,14 @@ class Body extends StatelessWidget {
       children: [
         SizedBox(width: MediaQuery.of(context).size.width * .05,),
         Text(title,
-          textAlign: TextAlign.center,
+          textAlign: TextAlign.left,
+          maxLines: 2,
           textScaleFactor: 1.0,
+
           style: GoogleFonts.montserrat(
             color: colorGg,
             fontWeight: FontWeight.w900,
-            fontSize: 18,),),
+            fontSize: 16,),),
         Text("Publish : $date",
           textScaleFactor: 1.0,
           textAlign: TextAlign.center,
@@ -32,12 +34,12 @@ class Body extends StatelessWidget {
             fontWeight: FontWeight.w500,
             fontSize: 10,),),
         Expanded(flex: 1,
-          child: Text("$body".substring(0, 40) + "...",
+          child: Text(body,
             textScaleFactor: 1.0,
             softWrap: false,
-            maxLines: 2,
+            maxLines: 4,
             overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.left,
             style: GoogleFonts.montserrat(
               color: colorGg,
               fontWeight: FontWeight.w500,

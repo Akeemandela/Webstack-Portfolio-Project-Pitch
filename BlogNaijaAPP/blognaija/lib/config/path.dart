@@ -1,1 +1,1 @@
-const apiRoute = "https://fc69-196-181-53-102.eu.ngrok.io";
+String apiRoute = "https://magenta-raven-vest.cyclic.app";
