@@ -1,4 +1,16 @@
 {
+  "name": "blognaijabe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ejs",
+  "directories": {
+    "views": "views"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+
   "dependencies": {
     "ejs": "^3.1.9",
     "express": "^4.18.2",
