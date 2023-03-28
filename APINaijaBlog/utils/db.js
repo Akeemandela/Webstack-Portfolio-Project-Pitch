@@ -1,10 +1,10 @@
-import {
+/*import {
   MongoClient,
-} from 'mongodb';
+} from 'mongodb';*/
 import {
   env,
 } from 'process';
-
+const { MongoClient, ServerApiVersion } = require('mongodb');
 class DBClient {
   constructor() {
     this.username = env.DB_USERNAME || 'root';
@@ -12,10 +12,8 @@ class DBClient {
     this.host = env.DB_HOST || 'localhost';
     this.port = env.DB_PORT || 27017;
     this.dbName = env.DB_DATABASE || 'blognaija';
-    MongoClient(`mongodb://${this.host}:${this.port}/${this.dbName}`, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }).connect().then((client) => {
+    const uri = "mongodb+srv://hegeldirkk:IxbLtImLTzCyrx9r@cluster0.ffolp2x.mongodb.net/?retryWrites=true&w=majority";
+    MongoClient(`${uri}`, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 }).connect().then((client) => {
       this.client = client;
       this.db = this.client.db(this.dbName);
     }).catch((err) => {

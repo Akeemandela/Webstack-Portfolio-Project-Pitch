@@ -1,6 +1,7 @@
 import express from 'express';
 const mongoose = require('mongoose');
 import router from './routes';
+const { MongoClient, ServerApiVersion } = require('mongodb');
 import { env, } from 'process';
 
 const app = express();
@@ -18,7 +19,8 @@ app.use(router);
 const host = env.DB_HOST || 'localhost';
 const portdb = env.DB_PORT || 27017;
 const dbName = env.DB_DATABASE || 'blognaija';
-mongoose.connect(`mongodb://${host}:${portdb}/${dbName}`, { useNewUrlParser: true,   useUnifiedTopology: true, })
+const uri = "mongodb+srv://hegeldirkk:IxbLtImLTzCyrx9r@cluster0.ffolp2x.mongodb.net/?retryWrites=true&w=majority";
+mongoose.connect(`${uri}`, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 })
   .then(() => {
     console.log(`Connected to MongoDB ${portdb}`);
     app.listen(port, () => console.log(`Server running on port ${port}`));
